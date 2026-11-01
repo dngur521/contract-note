@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: contract-note
+  config:
+    # API 키는 저장소 밖으로 나가지 않도록 프로젝트 맨 위 .env 파일에 둔다.
+    import: optional:file:../.env[.properties]
+  datasource:
+    url: jdbc:postgresql://localhost:5433/contractnote
+    username: contractnote
+    password: contractnote
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 50MB
+
+app:
+  # 키가 있는 AI를 쓴다. Gemini가 우선이고, 둘 다 없으면 샘플 AI로 동작한다.
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: gemini-3.5-flash-lite
+  claude:
+    api-key: ${ANTHROPIC_API_KEY:}
+    model: claude-opus-5-5
+  rag:
+    top-k: 10
+    min-score: 0.25

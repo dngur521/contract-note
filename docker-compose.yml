@@ -1,0 +1,14 @@
+services:
+  db:
+    image: pgvector/pgvector:pg17
+    container_name: contractnote-db
+    environment:
+      POSTGRES_DB: contractnote
+      POSTGRES_USER: contractnote
+      POSTGRES_PASSWORD: contractnote # 내 컴퓨터 안에서만 쓰는 개발용 비밀번호
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:

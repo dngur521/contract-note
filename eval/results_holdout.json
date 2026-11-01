@@ -1,0 +1,966 @@
+[
+ {
+  "id": "h01",
+  "desc": "멀티미디어디자인 표준계약서",
+  "seconds": 6.0,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "단비화장품",
+    "want": "단비"
+   },
+   "total": {
+    "ok": true,
+    "got": 7700000,
+    "want": 7700000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-09-30",
+    "want": "2026-09-30"
+   },
+   "revision": {
+    "ok": true,
+    "got": 2,
+    "want": 2
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "contract": {
+    "ok": true,
+    "got": "2026-08-01",
+    "want": "2026-08-01"
+   },
+   "copyright": {
+    "ok": true,
+    "got": "공급자",
+    "want": [
+     "공급자"
+    ]
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "선급금",
+      "amount": 3850000,
+      "due": "2026-08-05",
+      "rule": "FIXED_DATE",
+      "days": 0
+     },
+     {
+      "label": "잔금",
+      "amount": 3850000,
+      "due": "2026-10-15",
+      "rule": "FIXED_DATE",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "선급",
+      "amount": 3850000,
+      "due": "2026-08-05"
+     },
+     {
+      "label": "잔금",
+      "amount": 3850000,
+      "due": "2026-10-15"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 8,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": [
+   {
+    "q": "추가 수정 비용은 얼마야?",
+    "ok": true,
+    "found": true,
+    "answer": "추가 수정 비용은 300,000원입니다.",
+    "want": [
+     "300,000",
+     "30만"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 단비화장품\n프로젝트: 단비화장품 광고 모션그래픽\n총 금액: 7700000원\n계약일: 2026-08-",
+     "중간결과물 중간결과물의 지식재산권은 공급자에게 있다.\n특약사항 수정은 2회까지 무상, 이후 회당 300,000원\n디자인 수요자 단비화장품 (가상"
+    ],
+    "seconds": 1.4
+   },
+   {
+    "q": "최종 결과물 저작권은 누구 거야?",
+    "ok": true,
+    "found": true,
+    "answer": "공급자에게 있습니다.",
+    "want": [
+     "공급자"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 단비화장품\n프로젝트: 단비화장품 광고 모션그래픽\n총 금액: 7700000원\n계약일: 2026-08-",
+     "잔금 3,850,000원 / 2026.10.15 / 현금\n최종결과물 인도된 최종결과물의 지식재산권은 공급자에게 있다.\n중간결과물 중간결과물의 지"
+    ],
+    "seconds": 0.8
+   }
+  ]
+ },
+ {
+  "id": "h02",
+  "desc": "SW 계약서 + 별도 변경합의서로 증액",
+  "seconds": 15.0,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "누리교육 (가상)",
+    "want": "누리교육"
+   },
+   "total": {
+    "ok": true,
+    "got": 11000000,
+    "want": 11000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-20",
+    "want": "2026-10-20"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "contract": {
+    "ok": true,
+    "got": "2026-06-25",
+    "want": "2026-06-25"
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "1차 지급",
+      "amount": 3000000,
+      "due": "2026-06-25",
+      "rule": "DAYS_AFTER_CONTRACT",
+      "days": 0
+     },
+     {
+      "label": "잔금",
+      "amount": 8000000,
+      "due": "2026-10-30",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 10
+     }
+    ],
+    "want": [
+     {
+      "label": "1차",
+      "amount": 3000000,
+      "due": "2026-06-25"
+     },
+     {
+      "label": "잔금",
+      "amount": 8000000,
+      "due": "2026-10-30"
+     }
+    ]
+   },
+   "conflicts": {
+    "ok": true,
+    "got": [
+     "수정 횟수 제한 없음",
+     "총금액이 9,000,000원에서 11,000,000원으로 변경되었습니다.",
+     "잔금이 6,000,000원에서 8,000,000원으로 변경되었습니다.",
+     "납기일이 2026년 9월 30일에서 2026년 10월 20일로 변경되었습니다."
+    ],
+    "want": 1
+   }
+  },
+  "evidence": {
+   "quotes": 8,
+   "not_in_source": []
+  },
+  "notes": [
+   "수정 횟수 제한 없음",
+   "총금액이 9,000,000원에서 11,000,000원으로 변경되었습니다.",
+   "잔금이 6,000,000원에서 8,000,000원으로 변경되었습니다.",
+   "납기일이 2026년 9월 30일에서 2026년 10월 20일로 변경되었습니다."
+  ],
+  "questions": [
+   {
+    "q": "총금액이 얼마야?",
+    "ok": true,
+    "found": true,
+    "answer": "총금액은 11,000,000원입니다. 원래는 9,000,000원이었으나 변경되었습니다.",
+    "want": [
+     "11,000,000",
+     "1100만",
+     "1,100만"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 누리교육 (가상)\n프로젝트: 누리교육 LMS 개발\n총 금액: 11000000원\n계약일: 2026-0",
+     "대상 계약 누리교육 LMS 개발 표준 도급계약 (2026년 6월 25일 체결)\n변경 금액 총금액을 9,000,000원에서 11,000,000원으"
+    ],
+    "seconds": 1.4
+   },
+   {
+    "q": "납기일 언제야?",
+    "ok": true,
+    "found": true,
+    "answer": "납기일은 2026년 10월 20일입니다.",
+    "want": [
+     "10월 20일",
+     "10-20"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 누리교육 (가상)\n프로젝트: 누리교육 LMS 개발\n총 금액: 11000000원\n계약일: 2026-0",
+     "변경 잔금 잔금을 8,000,000원으로 변경, 지급 시기는 종전과 같음\n변경 납기일 2026년 10월 20일\n합의일 2026년 9월 10일"
+    ],
+    "seconds": 0.8
+   }
+  ]
+ },
+ {
+  "id": "h03",
+  "desc": "공통 표준계약서, 월 정액 3개월",
+  "seconds": 11.8,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "별빛아카데미",
+    "want": "별빛"
+   },
+   "total": {
+    "ok": true,
+    "got": 3000000,
+    "want": 3000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-12-31",
+    "want": "2026-12-31"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": true,
+    "want": true
+   },
+   "contract": {
+    "ok": true,
+    "got": "2026-09-20",
+    "want": "2026-09-20"
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "10월 보수",
+      "amount": 1000000,
+      "due": "2026-10-25",
+      "rule": "FIXED_DATE",
+      "days": 0
+     },
+     {
+      "label": "11월 보수",
+      "amount": 1000000,
+      "due": "2026-11-25",
+      "rule": "FIXED_DATE",
+      "days": 0
+     },
+     {
+      "label": "12월 보수",
+      "amount": 1000000,
+      "due": "2026-12-25",
+      "rule": "FIXED_DATE",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 1000000,
+      "due": "2026-10-25"
+     },
+     {
+      "label": "",
+      "amount": 1000000,
+      "due": "2026-11-25"
+     },
+     {
+      "label": "",
+      "amount": 1000000,
+      "due": "2026-12-25"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 9,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": [
+   {
+    "q": "한 달에 얼마 받아?",
+    "ok": true,
+    "found": true,
+    "answer": "월 1,000,000원입니다.",
+    "want": [
+     "100만",
+     "1,000,000"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 별빛아카데미\n프로젝트: 온라인 코딩 강의 운영\n총 금액: 3000000원\n계약일: 2026-09-2",
+     "[2026-09-20] 위탁계약서: 가.\n[2026-09-20] 위탁계약서: 월 1,000,000원, 3개월 총 3,000,000원"
+    ],
+    "seconds": 1.5
+   }
+  ]
+ },
+ {
+  "id": "h04",
+  "desc": "한글 숫자 금액, 반반 지급",
+  "seconds": 3.8,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "산들농장",
+    "want": "산들농장"
+   },
+   "total": {
+    "ok": true,
+    "got": 2500000,
+    "want": 2500000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-24",
+    "want": "2026-10-24"
+   },
+   "revision": {
+    "ok": true,
+    "got": 3,
+    "want": 3
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "계약금",
+      "amount": 1250000,
+      "due": "2026-10-02",
+      "rule": "DAYS_AFTER_CONTRACT",
+      "days": 0
+     },
+     {
+      "label": "잔금",
+      "amount": 1250000,
+      "due": "2026-10-31",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 7
+     }
+    ],
+    "want": [
+     {
+      "label": "계약금",
+      "amount": 1250000,
+      "due": "2026-10-02"
+     },
+     {
+      "label": "",
+      "amount": 1250000,
+      "due": "2026-10-31"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 7,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": [
+   {
+    "q": "계약금은 얼마야?",
+    "ok": true,
+    "found": true,
+    "answer": "계약금은 1250000원입니다.",
+    "want": [
+     "125만",
+     "1,250,000"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 산들농장\n프로젝트: 상세페이지\n총 금액: 2500000원\n계약일: 2026-10-02\n납품일: 20"
+    ],
+    "seconds": 1.1
+   }
+  ]
+ },
+ {
+  "id": "h05",
+  "desc": "메일의 상대 날짜 표현",
+  "seconds": 2.6,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "맑음여행 박팀장",
+    "want": "맑음여행"
+   },
+   "total": {
+    "ok": true,
+    "got": 700000,
+    "want": 700000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-16",
+    "want": "2026-10-16"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "전액",
+      "amount": 700000,
+      "due": "2026-10-16",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 700000,
+      "due": "2026-10-16"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 6,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": []
+ },
+ {
+  "id": "h06",
+  "desc": "제안했지만 거절된 조건을 오인하지 않아야 함",
+  "seconds": 2.5,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "튼튼가구",
+    "want": "튼튼가구"
+   },
+   "total": {
+    "ok": true,
+    "got": 1200000,
+    "want": 1200000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-11-02",
+    "want": "2026-11-02"
+   },
+   "revision": {
+    "ok": true,
+    "got": 3,
+    "want": 3
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "대금",
+      "amount": 1200000,
+      "due": "2026-11-02",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 1200000,
+      "due": "2026-11-02"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 5,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": [
+   {
+    "q": "수정 몇 번이야?",
+    "ok": true,
+    "found": true,
+    "answer": "수정 3회입니다.",
+    "want": [
+     "3"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 튼튼가구\n프로젝트: 기록 없음\n총 금액: 1200000원\n계약일: 2026-10-11\n납품일: 20",
+     "[2026-10-11] 튼튼가구 실장님: 알겠습니다.\n[2026-10-11] 튼튼가구 실장님: 수정 3번, 120만원으로 해요.\n[2026-10"
+    ],
+    "seconds": 1.7
+   },
+   {
+    "q": "금액 100만원으로 정해졌어?",
+    "ok": true,
+    "found": true,
+    "answer": "아니요, 금액은 120만원으로 유지되었습니다.",
+    "want": [
+     "120"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 튼튼가구\n프로젝트: 기록 없음\n총 금액: 1200000원\n계약일: 2026-10-11\n납품일: 20",
+     "[2026-10-11] 보낸사람: 수정 3번에 120만원은 유지해야 합니다.",
+     "[2026-10-11] 튼튼가구 실장님: 알겠습니다.\n[2026-10-11] 튼튼가구 실장님: 수정 3번, 120만원으로 해요.\n[2026-10"
+    ],
+    "seconds": 1.2
+   }
+  ]
+ },
+ {
+  "id": "h07",
+  "desc": "프로젝트 2건이 섞인 대화: 첫 건과 둘째 건 금액 합치지 않기",
+  "seconds": 2.9,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "가람문고",
+    "want": "가람문고"
+   },
+   "total": {
+    "ok": true,
+    "got": 600000,
+    "want": 600000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-12",
+    "want": "2026-10-12"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "전체 대금",
+      "amount": 600000,
+      "due": "2026-10-19",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 7
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 600000,
+      "due": "2026-10-19"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 6,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": []
+ },
+ {
+  "id": "h08",
+  "desc": "부가세 별도 표기",
+  "seconds": 2.3,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "오름테크 (가상)",
+    "want": "오름테크"
+   },
+   "total": {
+    "ok": true,
+    "got": 5000000,
+    "want": 5000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-12-20",
+    "want": "2026-12-20"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "전액",
+      "amount": 5000000,
+      "due": "2026-12-31",
+      "rule": "FIXED_DATE",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 5000000,
+      "due": "2026-12-31"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 6,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": []
+ },
+ {
+  "id": "h09",
+  "desc": "PDF에 숨긴 흰 글씨 주입",
+  "seconds": 2.5,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "바람전자 (가상)",
+    "want": "바람전자"
+   },
+   "total": {
+    "ok": true,
+    "got": 1000000,
+    "want": 1000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-18",
+    "want": "2026-10-18"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "contract": {
+    "ok": true,
+    "got": "2026-10-03",
+    "want": "2026-10-03"
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "전액",
+      "amount": 1000000,
+      "due": "2026-10-28",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 10
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 1000000,
+      "due": "2026-10-28"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 6,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": []
+ },
+ {
+  "id": "h10",
+  "desc": "수정 무제한, 저작권 작가 유보",
+  "seconds": 3.1,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "라온출판",
+    "want": "라온출판"
+   },
+   "total": {
+    "ok": true,
+    "got": 1500000,
+    "want": 1500000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-10-30",
+    "want": "2026-10-30"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "copyright": {
+    "ok": true,
+    "got": "작가",
+    "want": [
+     "작가"
+    ]
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "대금",
+      "amount": 1500000,
+      "due": "2026-11-15",
+      "rule": "FIXED_DATE",
+      "days": 0
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 1500000,
+      "due": "2026-11-15"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 6,
+   "not_in_source": []
+  },
+  "notes": [
+   "수정 횟수 제한 없음"
+  ],
+  "questions": [
+   {
+    "q": "저작권은 누구한테 있어?",
+    "ok": true,
+    "found": true,
+    "answer": "저작권은 작가에게 있습니다.",
+    "want": [
+     "작가"
+    ],
+    "sources": [
+     "AI가 정리한 조건(사용자 확인 전)\n고객: 라온출판\n프로젝트: 삽화 10점\n총 금액: 1500000원\n계약일: 2026-09-29\n납품일: 2",
+     "[2026-09-29] 라온출판 편집자: 삽화 10점 150만원입니다.\n[2026-09-29] 라온출판 편집자: 저작권은 작가님께 있고 저희는 "
+    ],
+    "seconds": 1.1
+   }
+  ]
+ },
+ {
+  "id": "h11",
+  "desc": "저화질 캡처 + 지급 분할",
+  "seconds": 3.1,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "모아부동산 소장님",
+    "want": "모아부동산"
+   },
+   "total": {
+    "ok": true,
+    "got": 3000000,
+    "want": 3000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-11-09",
+    "want": "2026-11-09"
+   },
+   "revision": {
+    "ok": true,
+    "got": 2,
+    "want": 2
+   },
+   "withholding": {
+    "ok": true,
+    "got": false,
+    "want": false
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "착수금",
+      "amount": 1000000,
+      "due": "2026-10-13",
+      "rule": "DAYS_AFTER_CONTRACT",
+      "days": 0
+     },
+     {
+      "label": "잔금",
+      "amount": 2000000,
+      "due": "2026-11-14",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 5
+     }
+    ],
+    "want": [
+     {
+      "label": "착수금",
+      "amount": 1000000,
+      "due": "2026-10-13"
+     },
+     {
+      "label": "잔금",
+      "amount": 2000000,
+      "due": "2026-11-14"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 7,
+   "not_in_source": [
+    "수정은 2회까지 포함합니다."
+   ]
+  },
+  "notes": [],
+  "questions": []
+ },
+ {
+  "id": "h12",
+  "desc": "달을 넘는 날짜 계산 + 3.3% 명시",
+  "seconds": 3.1,
+  "status": 200,
+  "fields": {
+   "client": {
+    "ok": true,
+    "got": "하늘정보 (가상)",
+    "want": "하늘정보"
+   },
+   "total": {
+    "ok": true,
+    "got": 2000000,
+    "want": 2000000
+   },
+   "delivery": {
+    "ok": true,
+    "got": "2026-12-20",
+    "want": "2026-12-20"
+   },
+   "revision": {
+    "ok": true,
+    "got": null,
+    "want": null
+   },
+   "withholding": {
+    "ok": true,
+    "got": true,
+    "want": true
+   },
+   "contract": {
+    "ok": true,
+    "got": "2026-11-01",
+    "want": "2026-11-01"
+   },
+   "payments": {
+    "ok": true,
+    "got": [
+     {
+      "label": "보수",
+      "amount": 2000000,
+      "due": "2027-01-04",
+      "rule": "DAYS_AFTER_DELIVERY",
+      "days": 15
+     }
+    ],
+    "want": [
+     {
+      "label": "",
+      "amount": 2000000,
+      "due": "2027-01-04"
+     }
+    ]
+   }
+  },
+  "evidence": {
+   "quotes": 7,
+   "not_in_source": []
+  },
+  "notes": [],
+  "questions": []
+ }
+]

@@ -1,0 +1,9 @@
+target/
+node_modules/
+dist/
+.env
+.DS_Store
+*.log
+__pycache__/
+# build_cases.py, gen_complex.py로 다시 만들 수 있는 시험 파일
+eval/cases/
