@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.genai.Client;
+import com.google.genai.errors.ApiException;
 import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
@@ -13,23 +14,29 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GeminiContractAi implements ContractAi {
 
+    private static final Logger log = LoggerFactory.getLogger(GeminiContractAi.class);
     private static final int TIMEOUT_MILLIS = 120_000;
+    private static final int TOO_MANY_REQUESTS = 429;
 
     private static final ObjectMapper JSON = new ObjectMapper()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private final Client client;
-    private final String model;
+    private final List<String> models;
 
-    public GeminiContractAi(String apiKey, String model) {
+    /** models: 앞에서부터 쓰고, 무료 한도(429)에 걸리면 다음 모델로 넘어간다. */
+    public GeminiContractAi(String apiKey, List<String> models) {
         this.client = Client.builder()
                 .apiKey(apiKey)
                 .httpOptions(HttpOptions.builder().timeout(TIMEOUT_MILLIS).build())
                 .build();
-        this.model = model;
+        this.models = List.copyOf(models);
     }
 
     @Override
@@ -64,7 +71,8 @@ public class GeminiContractAi implements ContractAi {
                 .responseJsonSchema(schema)
                 .maxOutputTokens(32000)
                 .build();
-        GenerateContentResponse response = client.models.generateContent(model, Content.fromParts(parts.toArray(Part[]::new)), config);
+        Content content = Content.fromParts(parts.toArray(Part[]::new));
+        GenerateContentResponse response = firstAvailable(models, model -> client.models.generateContent(model, content, config));
         String text = response.text();
         if (text == null || text.isBlank()) {
             throw new AiFailedException("AI가 응답을 만들지 못했습니다. 다시 시도해 주세요.");
@@ -74,5 +82,24 @@ public class GeminiContractAi implements ContractAi {
         } catch (JsonProcessingException e) {
             throw new AiFailedException("AI 응답을 읽지 못했습니다. 기록이 길면 나눠서 올려 주세요.");
         }
+    }
+
+    static <R> R firstAvailable(List<String> models, Function<String, R> call) {
+        ApiException limited = null;
+        for (String model : models) {
+            try {
+                return call.apply(model);
+            } catch (ApiException e) {
+                if (e.code() != TOO_MANY_REQUESTS) {
+                    throw e;
+                }
+                log.warn("{} 모델이 한도에 걸려 다음 모델을 시도합니다.", model);
+                limited = e;
+            }
+        }
+        if (limited == null) {
+            throw new IllegalStateException("Gemini 모델이 설정되지 않았습니다.");
+        }
+        throw limited;
     }
 }

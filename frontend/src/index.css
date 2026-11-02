@@ -149,3 +149,20 @@ a { color: var(--accent); }
   .form-grid { grid-template-columns: 1fr; }
   .tagline { display: none; }
 }
+
+.source-card { margin-top: 8px; font-size: 13px; }
+.source-card summary { cursor: pointer; color: #5b6472; }
+.source-card .quote { white-space: pre-line; }
+
+.loading { display: inline-flex; align-items: center; gap: 10px; }
+.spinner {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  border: 2px solid rgba(120, 130, 150, .3);
+  border-top-color: #2f5bd8;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+.primary .spinner { border-color: rgba(255, 255, 255, .4); border-top-color: #fff; }
+@keyframes spin { to { transform: rotate(360deg); } }

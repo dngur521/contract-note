@@ -96,7 +96,7 @@ public class ApiExceptionHandler {
         log.error("Gemini API 호출 실패: {}", e.code(), e);
         return switch (e.code()) {
             case 429 -> body(HttpStatus.TOO_MANY_REQUESTS, String.valueOf(e.getMessage()).contains("per day")
-                    ? "오늘 Gemini 무료 사용량을 모두 썼습니다. 한국 시간 오후 4~5시쯤 초기화됩니다."
+                    ? "Gemini 무료 사용량 한도에 걸렸습니다. 한국 시간 오후 5시 이후 다시 시도해 주세요. 그래도 안 되면 다음 날 다시 시도해 주세요."
                     : "AI 요청이 많습니다. 잠시 후 다시 시도해 주세요.");
             case 400 -> body(HttpStatus.BAD_GATEWAY, "AI가 파일을 읽지 못했습니다. 파일이 손상되지 않았는지 확인해 주세요.");
             case 401, 403 -> body(HttpStatus.BAD_GATEWAY, "Gemini API 키를 확인해 주세요.");

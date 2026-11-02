@@ -63,7 +63,14 @@ export function UploadPage({ onDone }: { onDone: (contract: Contract) => Promise
 
       {error && <div className="error-box">{error}</div>}
       <button className="primary" disabled={files.length === 0 || busy} onClick={submit}>
-        {busy ? 'AI가 기록을 읽는 중입니다...' : '계약 조건 정리하기'}
+        {busy ? (
+          <span className="loading">
+            <span className="spinner" aria-hidden="true" />
+            AI가 기록을 읽는 중입니다...
+          </span>
+        ) : (
+          '계약 조건 정리하기'
+        )}
       </button>
       <p className="muted small">실제 고객 정보가 담긴 자료를 올릴 때는 다른 사람의 개인정보에 주의해 주세요.</p>
     </section>

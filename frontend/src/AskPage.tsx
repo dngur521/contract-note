@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { api } from './api'
 import type { AskResponse, Contract } from './api'
 
@@ -11,6 +11,17 @@ export function AskPage({ contracts }: { contracts: Contract[] }) {
   const [contractId, setContractId] = useState<number | null>(null)
   const [turns, setTurns] = useState<Turn[]>([])
   const [busy, setBusy] = useState(false)
+  const lastTurn = useRef<HTMLDivElement>(null)
+  const form = useRef<HTMLFormElement>(null)
+
+  // 새 질문과 답이 화면에 보이게 내린다. 답이 화면보다 길면 답의 처음부터 보여 준다.
+  useEffect(() => {
+    if (!lastTurn.current || !form.current) return
+    const height = form.current.getBoundingClientRect().bottom - lastTurn.current.getBoundingClientRect().top
+    const fits = height <= window.innerHeight - 24
+    const target = fits ? form.current : lastTurn.current
+    target.scrollIntoView({ behavior: 'smooth', block: fits ? 'end' : 'start' })
+  }, [turns])
 
   const ask = async (text: string) => {
     const q = text.trim()
@@ -56,27 +67,35 @@ export function AskPage({ contracts }: { contracts: Contract[] }) {
 
       <div className="chat">
         {turns.map((turn, index) => (
-          <div key={index}>
+          <div key={index} ref={index === turns.length - 1 ? lastTurn : undefined}>
             <div className="bubble user">{turn.question}</div>
             {turn.error && <div className="error-box">{turn.error}</div>}
-            {!turn.response && !turn.error && <div className="bubble ai muted">기록을 찾는 중입니다...</div>}
+            {!turn.response && !turn.error && (
+              <div className="bubble ai muted loading">
+                <span className="spinner" aria-hidden="true" />
+                기록을 찾는 중입니다...
+              </div>
+            )}
             {turn.response && (
               <div className={turn.response.found ? 'bubble ai' : 'bubble ai not-found'}>
                 {turn.response.answer}
-                {turn.response.sources.map((source, i) => (
-                  <blockquote className="quote" key={i}>
-                    “{source.text}”{' '}
-                    <cite>
-                      {source.documentId === null ? (
-                        `${source.clientName} · ${source.fileName}`
-                      ) : (
+                {turn.response.sources.map((source, i) =>
+                  source.documentId === null ? (
+                    <details className="source-card" key={i}>
+                      <summary>{source.clientName} · {source.fileName} 보기</summary>
+                      <blockquote className="quote">{source.text}</blockquote>
+                    </details>
+                  ) : (
+                    <blockquote className="quote" key={i}>
+                      “{source.text}”{' '}
+                      <cite>
                         <a href={`/api/documents/${source.documentId}/file`} target="_blank" rel="noreferrer">
                           {source.clientName} · {source.fileName}
                         </a>
-                      )}
-                    </cite>
-                  </blockquote>
-                ))}
+                      </cite>
+                    </blockquote>
+                  ),
+                )}
               </div>
             )}
           </div>
@@ -84,6 +103,7 @@ export function AskPage({ contracts }: { contracts: Contract[] }) {
       </div>
 
       <form
+        ref={form}
         className="ask-form"
         onSubmit={(e) => {
           e.preventDefault()

@@ -22,6 +22,8 @@ app:
   gemini:
     api-key: ${GEMINI_API_KEY:}
     model: gemini-3.5-flash-lite
+    # 위 모델이 무료 한도에 걸리면 쓴다. 시험 수치는 한 모델로 재야 하므로 채점할 때는 비워 둔다.
+    fallback-model: gemini-3.5-flash
   claude:
     api-key: ${ANTHROPIC_API_KEY:}
     model: claude-opus-5-5
