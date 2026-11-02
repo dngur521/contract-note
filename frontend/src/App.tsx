@@ -47,7 +47,7 @@ export default function App() {
       <header className="topbar">
         <div className="brand">
           <span className="logo">계약노트</span>
-          <span className="tagline">카톡과 메일 속 계약을 정리하고 돈 받을 날을 챙겨 줍니다</span>
+          <span className="tagline">카카오톡과 메일 속 계약을 정리하고 돈 받을 날을 챙겨 줍니다</span>
         </div>
         <nav className="tabs">
           {TABS.map((t) => (
