@@ -16,7 +16,10 @@ python3 eval/gen_complex.py                            # 복잡한 시나리오 
 python3 eval/run_eval.py s_tune --resume               # 끝난 건을 건너뛰고 이어서 채점
 python3 eval/robustness.py                             # 잘못된 입력 시험
 python3 eval/multi_contract.py                         # 여러 고객 섞임 시험
+python samples/demo/play_demo.py prepare|run|ask      # 시연 진행. Playwright와 --remote-debugging-port=9333 Edge 필요. prepare는 저장된 계약을 모두 지움
 ```
+
+Claude로 켜기: `./mvnw spring-boot:run -Dspring-boot.run.arguments="--app.gemini.api-key= --app.claude.model=claude-sonnet-5-5"`. 시연 영상은 이 설정으로 찍었고, 기본 설정은 Gemini다.
 
 ## 지켜야 할 것
 
