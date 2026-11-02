@@ -7,3 +7,6 @@ dist/
 __pycache__/
 # build_cases.py, gen_complex.py로 다시 만들 수 있는 시험 파일
 eval/cases/
+
+# 표준계약서 원문 사본: 재배포 허용을 확인하지 못해 올리지 않는다
+eval/forms/

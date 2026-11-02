@@ -57,3 +57,7 @@ npm run dev
 ## 주의
 
 Gemini 무료 등급에 보낸 내용은 Google이 제품 개선에 쓸 수 있고 검토자가 읽을 수 있습니다. 가상 자료만 올립니다. 실제 계약 자료를 다루는 서비스라면 유료 등급을 써야 합니다.
+
+## 시험 자료
+
+`eval/forms/`의 표준계약서 원문은 저장소에 포함하지 않습니다. 시험 자료를 다시 만들려면 공개된 표준계약서 양식을 직접 받아 이 폴더에 넣어야 합니다(`common_standard.txt`, `sw_standard.txt`, `visual_design_standard.txt`, `multimedia_design_standard.txt`).

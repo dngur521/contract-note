@@ -29,7 +29,7 @@ python3 eval/multi_contract.py                         # 여러 고객 섞임 �
 - `eval/results_final_first_run.json`과 `results_holdout_first_run.json`은 처음 본 시험의 기록이므로 덮어쓰지 않는다. 새 수치를 대표로 내려면 처음 보는 시험 자료를 새로 만든다.
 - `eval/results_s_tune_first_run.json`도 덮어쓰지 않는다. `s_final`은 수정을 마친 뒤 한 번만 돌리고, 끝나면 바로 `results_s_final_first_run.json`으로 복사한다.
 - 시험을 이어 하기 전에 서버가 켜져 있는지 확인한다(위 명령 참고, Docker Desktop 필요). 채점 도구 실행 위치는 이 폴더다.
-- GitHub 저장소 `dngur521/contract-note`(비공개). 커밋은 요청이 있을 때만 하고, 푸시와 저장소 작업은 Claude 권한 설정에서 막힐 수 있으니 거부되면 사용자에게 `!` 명령을 안내한다.
+- GitHub 저장소 `dngur521/contract-note`(공개). 비밀 값과 개인정보를 올리지 않는다. `eval/forms`는 재배포 허용을 확인하지 못해 저장소에서 뺐고 로컬에만 있다. 커밋은 요청이 있을 때만 하고, 푸시와 저장소 작업은 Claude 권한 설정에서 막힐 수 있으니 거부되면 사용자에게 `!` 명령을 안내한다.
 - Gemini 무료 한도 응답은 이 모델 기준 하루 500회다(막히는 시점은 일정하지 않았다). 채점 한 건에 약 3회 쓴다. 촬영 직전에는 시험을 돌리지 않는다.
 - 기본 모델이 한도(429)에 걸리면 `app.gemini.fallback-model`(`gemini-3.5-flash`, 하루 20회·분당 5회로 표기됨)로 넘어간다. 채점 수치는 한 모델로 재야 하므로 시험할 때는 서버를 `-Dspring-boot.run.arguments=--app.gemini.fallback-model=`로 켠다.
 - zsh에서 URL에 `$변수:` 를 쓰면 수정자로 해석된다. `${변수}:` 로 쓴다.
